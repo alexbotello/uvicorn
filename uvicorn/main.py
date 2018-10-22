@@ -54,7 +54,9 @@ HANDLED_SIGNALS = (
 def get_logger(log_level):
     log_level = LOG_LEVELS[log_level]
     logging.basicConfig(format="%(levelname)s: %(message)s", level=log_level)
-    return logging.getLogger("uvicorn")
+    logger = logging.getLogger("uvicorn")
+    logger.setLevel(log_level)
+    return logger
 
 
 @click.command()
